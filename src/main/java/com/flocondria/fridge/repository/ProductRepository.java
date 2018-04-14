@@ -1,8 +1,8 @@
-package repository;
+package com.flocondria.fridge.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import domain.Product;
+import com.flocondria.fridge.domain.Product;
 
 /**
  * DataSource Management for the Products of a Location.

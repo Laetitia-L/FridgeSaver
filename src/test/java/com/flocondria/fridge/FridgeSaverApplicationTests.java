@@ -7,8 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import domain.Product;
-import repository.ProductRepository;
+import com.flocondria.fridge.domain.Product;
+import com.flocondria.fridge.repository.ProductRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
