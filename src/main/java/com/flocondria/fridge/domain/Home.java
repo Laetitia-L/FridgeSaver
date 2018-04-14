@@ -1,4 +1,4 @@
-package domain;
+package com.flocondria.fridge.domain;
 
 import javax.persistence.*;
 

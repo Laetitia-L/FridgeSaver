@@ -1,4 +1,4 @@
-package domain;
+package com.flocondria.fridge.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,13 +9,13 @@ import javax.persistence.Table;
 
 
 /**
- * JPA Entity for a Freezer in a Home.
+ * JPA Entity for a Frigde in a Home.
  * <p>
  * Created by Lætitia.
  */
 @Entity
 @Table
-public class Freezer {
+public class Fridge {
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -26,7 +26,7 @@ public class Freezer {
 	@Column
 	private String name;
 	
-	public Freezer(String name){
+	public Fridge(String name){
 		this.name = name;
 	}
 	
@@ -52,7 +52,8 @@ public class Freezer {
 
 	@Override
 	public String toString() {
-		return "Freezer [id=" + id + ", location=" + location + ", name=" + name + "]";
+		return "Fridge [id=" + id + ", location=" + location + ", name=" + name + "]";
 	}
-
+	
+	
 }

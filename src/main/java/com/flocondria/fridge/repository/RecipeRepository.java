@@ -1,8 +1,8 @@
-package repository;
+package com.flocondria.fridge.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import domain.Recipe;
+import com.flocondria.fridge.domain.Recipe;
 
 /**
  * DataSource Management for the Recipes possible with the available Products.

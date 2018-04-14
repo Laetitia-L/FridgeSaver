@@ -1,4 +1,4 @@
-package domain;
+package com.flocondria.fridge.domain;
 
 import java.util.ArrayList;
 import java.util.List;
