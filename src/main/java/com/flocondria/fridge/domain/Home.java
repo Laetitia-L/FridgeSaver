@@ -1,6 +1,10 @@
 package com.flocondria.fridge.domain;
 
+import java.util.UUID;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
 
 
 
@@ -14,11 +18,9 @@ import javax.persistence.*;
 public class Home {
 
 	@Id
-	@GeneratedValue
-	private Integer id;
-	
-	@OneToOne
-	private Location location;
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	private UUID id;
 	
 	@Column
 	private String name;
@@ -27,21 +29,13 @@ public class Home {
 		this.name = name;
 	}
 
-	public Integer getId() {
+	public UUID getId() {
 		return id;
-	}
-
-	public Location getLocation() {
-		return location;
-	}
-	
-	public void setLocation(Location location) {
-		this.location = location;
 	}
 	
 	@Override
 	public String toString() {
-		return "Home [id=" + id +"name =" +name+ ", location=" + location + "]";
+		return "Home [id=" + id +"name =" +name+  "]";
 	}
 	
 	

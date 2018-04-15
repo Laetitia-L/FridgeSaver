@@ -1,5 +1,7 @@
 package com.flocondria.fridge.repository;
 
+import java.util.UUID;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.flocondria.fridge.domain.Recipe;
@@ -9,5 +11,5 @@ import com.flocondria.fridge.domain.Recipe;
  * <p>
  * Created by Lætitia.
  */
-public interface RecipeRepository extends CrudRepository<Recipe, Integer> {
+public interface RecipeRepository extends CrudRepository<Recipe, UUID> {
 }

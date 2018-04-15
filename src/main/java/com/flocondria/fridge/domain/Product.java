@@ -2,7 +2,9 @@ package com.flocondria.fridge.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 /**
  * JPA Entity for a Product possibly available in Storage Location.
  * <p>
@@ -19,19 +25,25 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
+@Scope(value = "prototype")
+@Component
 public class Product {
 	@Id
-	@GeneratedValue
-	private Integer id;
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	private UUID id;
 	
-	@ManyToOne
-	private Location location;
-	
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	private Quantity quantity;
 	
 	@ManyToMany
 	private List<Recipe> recipes = new ArrayList<Recipe>();
+	
+	@ManyToMany
+	private List<StorageUnit> storageUnits = new ArrayList<StorageUnit>();
+	
+	@ManyToOne
+	private ProductCategory productCategory;
 		
 	@Column
 	private String name;
@@ -43,29 +55,11 @@ public class Product {
 	private String barcode;
 
 	
-	public Product() {
-	}
-	public Product(String barcode) {
-		this.barcode = barcode;
-	}
 
-	public Product(String name, String brand) {
-		this.name = name;
-		this.brand = brand;
-	}
-
-
-	public Integer getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
-	}
 
 	public Quantity getQuantity() {
 		return quantity;
@@ -107,10 +101,41 @@ public class Product {
 		this.barcode = barcode;
 	}
 
+	public List<StorageUnit> getStorageUnit() {
+		return storageUnits;
+	}
+	public void setStorageUnit(StorageUnit storageUnit) {
+		this.storageUnits.add(storageUnit);
+	}
+	
+	
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
+
+
+	public void setProduct_cat(ProductCategory productCategory) {
+		this.productCategory = productCategory;
+	}
+
+
+	public Product() {
+	}
+	public Product(String barcode) {
+		this.barcode = barcode;
+	}
+
+	public Product(String name, String brand) {
+		this.name = name;
+		this.brand = brand;
+	}
+
+
+	
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", location=" + location + ", quantity=" + quantity + ", name=" + name + ", brand="
-				+ brand + ", barcode=" + barcode + "]";
+		return "Product [id=" + id +  ", quantity=" + quantity + ", name=" + name + ", brand="
+				+ brand +  "Storage unit =" + storageUnits + ",category=" + productCategory +", barcode=" + barcode + "]";
 	}
 	
 	
