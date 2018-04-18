@@ -10,7 +10,7 @@ pipeline {
       }
       steps {
         echo 'Starting test'
-        sh 'maven --version'
+        sh 'docker exec maven:3.5.3-jdk-8-alpine mvn --version'
       }
     }
   }
