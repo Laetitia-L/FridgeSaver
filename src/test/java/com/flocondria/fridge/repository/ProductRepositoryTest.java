@@ -25,20 +25,14 @@ public class ProductRepositoryTest {
 	public void createAndDeleteProduct() {
 		productRepository.save(new Product("Pain d'épices", "Bjorg"));
 		productRepository.save(new Product("Riz basmati", "Taureau ailé"));
-		//productRepository.save(new Product("1254869863"));
 		productRepository.save(new Product("Chocolat 85%", "Lindt"));
 
 		System.out.println("\n************* Original Products *************");
-		productRepository.findAll().forEach(System.out::println);
-
-		// Modification of the Products
 		productRepository.findAll().forEach(product -> {
-			product.setBrand(product.getBrand().toUpperCase());
-			productRepository.save(product);
+			System.out.println(product.getName());
+            product.setBrand(product.getBrand().toUpperCase());
+            productRepository.save(product);
 		});
-
-		System.out.println("\n************* Modified Products *************");
-		productRepository.findAll().forEach(System.out::println);
 
 		productRepository.deleteAll();
 		System.out.println("\n************* Products removed ? *************");
