@@ -1,0 +1,6 @@
+version: '2'
+
+volumes:
+  postgres_data: {}
+
+#Todo build all service for production mod and deploy using kubernetes
