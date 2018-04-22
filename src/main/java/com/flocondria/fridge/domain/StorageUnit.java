@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -41,6 +42,9 @@ public class StorageUnit {
 	@ManyToMany(mappedBy = "storageUnits", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Product> products = new ArrayList<Product>();
 
+	@ManyToOne
+	private Home home;
+	
 	public UUID getId() {
 		return id;
 	}
@@ -69,6 +73,14 @@ public class StorageUnit {
 		this.products.add(product);
 	}
 	
+	public Home getHome() {
+		return home;
+	}
+
+	public void setHome(Home home) {
+		this.home = home;
+	}
+
 	public StorageUnit() {
 	}
 	
@@ -79,8 +91,11 @@ public class StorageUnit {
 
 	@Override
 	public String toString() {
-		return "StorageUnit [id=" + id + ", name=" + name + ", type=" + type +", products=" + products + "]";
+		return "StorageUnit [id=" + id + ", name=" + name + ", type=" + type + ", products=" + products + ", home="
+				+ home + "]";
 	}
+
+	
 	
 	
 	

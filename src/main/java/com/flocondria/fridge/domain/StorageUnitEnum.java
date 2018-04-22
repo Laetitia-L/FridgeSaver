@@ -6,7 +6,21 @@ package com.flocondria.fridge.domain;
  * Created by Lætitia.
  */
 public enum StorageUnitEnum {
-	FRIDGE,
-	FREEZER,
-	PANTRY;
+	FRIDGE ("Fridge"),
+	FREEZER("Freezer"),
+	PANTRY("Pantry");
+	
+	
+	
+	private String StorageUnitType;
+	
+	StorageUnitEnum(String StorageUnitType)
+	{
+		this.StorageUnitType = StorageUnitType;
 	}
+	
+	public String getStorageUnitType()
+	{
+		return this.StorageUnitType;
+	}
+}

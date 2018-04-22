@@ -38,6 +38,7 @@ public class ProductManagerService {
 		createProduct(request);
 		this.quantity.setAmount(request.getAmount());
 		product.setQuantity(this.quantity);
+		this.quantityRepository.save(quantity);
 	}
 	
 	public void createProduct(ProductManagerRequest request){
@@ -55,4 +56,10 @@ public class ProductManagerService {
 	
 	}
 
+	public void addProductToStorage(ProductManagerRequest request){
+		//adding a product to a specified storage unit ?
+		if(request.getStorageUnit() !=  null && request.getProduct() != null){
+			request.getStorageUnit().setProducts(request.getProduct());;
+		}
+	}
 }

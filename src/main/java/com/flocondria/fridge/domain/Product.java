@@ -132,6 +132,13 @@ public class Product {
 
 
 	
+	public Product(String name, String brand, String barcode) {
+		this.name = name;
+		this.brand = brand;
+		this.barcode = barcode;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id +  ", quantity=" + quantity + ", name=" + name + ", brand="

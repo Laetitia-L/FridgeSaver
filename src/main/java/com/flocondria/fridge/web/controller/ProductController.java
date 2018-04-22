@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.flocondria.fridge.domain.Product;
 import com.flocondria.fridge.web.request.ProductManagerRequest;
 import com.flocondria.fridge.web.service.ProductManagerService;
 

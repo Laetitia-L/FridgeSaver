@@ -19,7 +19,8 @@ public class FridgeSaverApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		productRepository.save(new Product("Pain d'épices", "Bjorg"));
+		
+		productRepository.save(new Product("Pain d'épices", "Bjorg", "3229820004341"));
 		productRepository.save(new Product("Riz basmati", "Taureau ailé"));
 		productRepository.save(new Product("Chocolat 85%", "Lindt"));
 		

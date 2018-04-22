@@ -1,5 +1,7 @@
 package com.flocondria.fridge.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.*;
@@ -24,6 +26,10 @@ public class Home {
 	
 	@Column
 	private String name;
+	
+	@OneToMany(mappedBy = "home", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<StorageUnit> storageUnits = new ArrayList<StorageUnit>();
+	
 
 	public Home( String name) {
 		this.name = name;
@@ -33,9 +39,25 @@ public class Home {
 		return id;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<StorageUnit> getStorageUnits() {
+		return storageUnits;
+	}
+
+	public void setStorageUnits(StorageUnit storageUnit) {
+		this.storageUnits.add(storageUnit);
+	}
+
 	@Override
 	public String toString() {
-		return "Home [id=" + id +"name =" +name+  "]";
+		return "Home [id=" + id + ", name=" + name + ", storageUnits=" + storageUnits + "]";
 	}
 	
 	
