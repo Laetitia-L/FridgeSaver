@@ -30,7 +30,7 @@ public class StorageUnitController {
 	//Create a storage unit
 	@RequestMapping(method= RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<HttpStatus> createStorageUnit(@RequestBody StorageUnitRequest request){
+	public ResponseEntity<HttpStatus> createStorageUnit(@RequestBody StorageUnitRequest request) throws Exception{
 		
 		try{
 			StorageUnitManagerService.createStorageUnit(request);

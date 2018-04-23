@@ -1,12 +1,12 @@
 package com.flocondria.fridge.web.request;
 
 public class HomeManagerRequest {
-	private String name;
+	private String homeName;
 	
-	public String getName() {
-		return name;
+	public String getHomeName() {
+		return homeName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setHomeName(String name) {
+		this.homeName = name;
 	}
 }

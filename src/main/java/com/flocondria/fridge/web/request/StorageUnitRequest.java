@@ -10,7 +10,7 @@ public class StorageUnitRequest {
 	private String name;
 	private String type;
 	private List<Product> products = new ArrayList<Product>();
-	private Home home;
+	private String homeName;
 	
 	public String getName() {
 		return name;
@@ -30,11 +30,12 @@ public class StorageUnitRequest {
 	public void setProducts(Product product) {
 		this.products.add(product);
 	}
-	public Home getHome() {
-		return home;
+	
+	public String getHomeName() {
+		return homeName;
 	}
-	public void setHome(Home home) {
-		this.home = home;
+	public void setHomeName(String homeName) {
+		this.homeName = homeName;
 	}
 	
 	

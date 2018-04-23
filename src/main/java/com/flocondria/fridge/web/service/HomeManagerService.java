@@ -28,7 +28,7 @@ public class HomeManagerService {
 	}
 	
 	public void createHome(HomeManagerRequest request){
-		this.home.setName(request.getName());
+		this.home.setName(request.getHomeName());
 	}
 	
 
