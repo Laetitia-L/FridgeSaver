@@ -1,5 +1,7 @@
 package com.flocondria.fridge.web.service;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,8 @@ public class StorageUnitManagerService {
 			 this.storageUnit.setName(request.getName());
 			 this.storageUnit.setType(request.getType());
 			 this.storageUnit.setHome(request.getHome());
+		 }else {
+			 throw new EntityNotFoundException();
 		 }
 		
 	}
