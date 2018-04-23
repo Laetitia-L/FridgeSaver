@@ -8,33 +8,39 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.flocondria.fridge.web.request.ProductManagerRequest;
 import com.flocondria.fridge.web.request.StorageUnitRequest;
-import com.flocondria.fridge.web.service.ProductManagerService;
+import com.flocondria.fridge.web.service.StorageUnitManagerService;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.slf4j.*;
 
 @RestController
 @RequestMapping(path="addStorageUnit")
 public class StorageUnitController {
 	
 	
-	 @Autowired
-	private StorageUnitService StorageUnitManagerService;
+	@Autowired
+	private StorageUnitManagerService StorageUnitManagerService;
+	static Log log = LogFactory.getLog(StorageUnitController.class.getName());
 	
 	//Create a storage unit
 	@RequestMapping(method= RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity createStorageUnit(@RequestBody StorageUnitRequest request){
+	@ResponseBody
+	public ResponseEntity<HttpStatus> createStorageUnit(@RequestBody StorageUnitRequest request){
 		
 		try{
 			StorageUnitManagerService.createStorageUnit(request);
 		}catch(EntityNotFoundException e){
-			return new ResponseEntity(HttpStatus.NOT_FOUND);
+			log.error("Entity not found when trying to create a storage unit");
+			Logger logger = LoggerFactory.getLogger("storage_error");
+			logger.info("OOps I could not create a storage unit");
+			return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity(HttpStatus.CREATED);
+		return new ResponseEntity<HttpStatus>(HttpStatus.CREATED);
 	}
 	
 	

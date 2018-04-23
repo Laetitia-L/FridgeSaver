@@ -5,6 +5,7 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.flocondria.fridge.domain.Home;
 import com.flocondria.fridge.domain.StorageUnit;
 import com.flocondria.fridge.repository.HomeRepository;
 import com.flocondria.fridge.repository.StorageUnitRepository;
@@ -30,7 +31,7 @@ public class StorageUnitManagerService {
 			 this.storageUnit.setType(request.getType());
 			 this.storageUnit.setHome(request.getHome());
 		 }else {
-			 throw new EntityNotFoundException();
+			 throw new EntityNotFoundException("Home not found");
 		 }
 		
 	}
