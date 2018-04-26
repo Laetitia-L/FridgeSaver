@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  * JPA Entity for Storage Unit containing Products.
@@ -24,6 +25,7 @@ import org.springframework.context.annotation.Scope;
  */
 
 @Entity
+@Component
 @Table
 @Scope(value = "prototype")
 public class StorageUnit {
