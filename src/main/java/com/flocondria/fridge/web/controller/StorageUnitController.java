@@ -25,7 +25,7 @@ public class StorageUnitController {
 	
 	@Autowired
 	private StorageUnitManagerService StorageUnitManagerService;
-	static Log log = LogFactory.getLog(StorageUnitController.class.getName());
+	private static Log log = LogFactory.getLog(StorageUnitController.class.getName());
 	
 	//Create a storage unit
 	@RequestMapping(method= RequestMethod.POST)

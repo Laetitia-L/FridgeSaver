@@ -12,19 +12,18 @@ import com.flocondria.fridge.web.request.HomeManagerRequest;
 import com.flocondria.fridge.web.service.HomeManagerService;
 
 @RestController
-@RequestMapping(path="addHome")
+@RequestMapping(path = "addHome")
 public class HomeController {
 	
-
+	
 	@Autowired
 	private HomeManagerService homeManagerService;
 	
 	//Create a Home
-	@RequestMapping(method= RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createHome(@RequestBody HomeManagerRequest request){
-		
+	public void createHome(@RequestBody HomeManagerRequest request) {
 		homeManagerService.createHome(request);
 	}
-
+	
 }
