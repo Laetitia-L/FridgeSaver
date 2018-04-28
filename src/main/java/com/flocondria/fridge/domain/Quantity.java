@@ -34,12 +34,26 @@ public class Quantity {
 	@OneToOne (cascade = CascadeType.ALL)
 	private Product product;
 	
+	/**
+	 * For example a box of neapolitan cake have a weight of 125 g which contain 5 cake
+	 * the unity is gramme (g) and amount 125 we can add optional portion 5.
+	 */
 	@Column
 	private float amount;
-		
+	
 	@Column	
 	private String unity;
-
+	
+	@Column
+	private int portion;
+	
+	public Quantity() {
+	}
+	
+	public Quantity setId(UUID id) {
+		this.id = id;
+		return this;
+	}
 	
 	public UUID getId() {
 		return id;
@@ -82,12 +96,16 @@ public class Quantity {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-
-
-	public Quantity() {
+	
+	public int getPortion() {
+		return portion;
 	}
-
-
+	
+	public Quantity setPortion(int portion) {
+		this.portion = portion;
+		return this;
+	}
+	
 	@Override
 	public String toString() {
 		return "Quantity [id=" + id + ", product=" + product + ", amount=" + amount + ", unity=" + unity + "]";
