@@ -16,8 +16,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
-
-
 /**
  * JPA Entity for a Home which has several Storage Locations.
  * <p>
@@ -27,7 +25,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Table(name = "HOME")
 public class Home {
-
+	
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -39,11 +37,10 @@ public class Home {
 	@OneToMany(mappedBy = "home", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<StorageUnit> storageUnits = new ArrayList<StorageUnit>();
 	
-
-	public Home( String name) {
+	public Home(String name) {
 		this.name = name;
 	}
-
+	
 	public UUID getId() {
 		return id;
 	}
@@ -51,23 +48,24 @@ public class Home {
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public List<StorageUnit> getStorageUnits() {
 		return storageUnits;
 	}
-
+	
 	public void setStorageUnits(StorageUnit storageUnit) {
 		this.storageUnits.add(storageUnit);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Home [id=" + id + ", name=" + name + ", storageUnits=" + storageUnits + "]";
 	}
 	
-	public Home(){}
+	public Home() {
+	}
 }
