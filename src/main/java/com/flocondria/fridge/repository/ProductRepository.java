@@ -1,5 +1,6 @@
 package com.flocondria.fridge.repository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
@@ -12,4 +13,5 @@ import com.flocondria.fridge.domain.Product;
  * Created by Lætitia.
  */
 public interface ProductRepository extends CrudRepository<Product, UUID> {
+	Optional<Product> findByName(String name);
 }
