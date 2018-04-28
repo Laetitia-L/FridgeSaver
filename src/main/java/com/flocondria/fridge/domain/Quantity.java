@@ -44,9 +44,6 @@ public class Quantity {
 	@Column
 	private String unity;
 	
-	@Column
-	private int portion;
-	
 	public Quantity() {
 	}
 	
@@ -90,16 +87,7 @@ public class Quantity {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	
-	public int getPortion() {
-		return portion;
-	}
-	
-	public Quantity setPortion(int portion) {
-		this.portion = portion;
-		return this;
-	}
-	
+
 	@Override
 	public String toString() {
 		return "Quantity [id=" + id + ", product=" + product + ", amount=" + amount + ", unity=" + unity + "]";
