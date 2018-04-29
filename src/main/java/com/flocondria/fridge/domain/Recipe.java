@@ -15,8 +15,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-
-
 /**
  * JPA Entity for the Quantity of one Product .
  * <p>
@@ -48,54 +46,65 @@ public class Recipe {
 	@ManyToMany
 	private List<RecipeCategory> recipeCategory = new ArrayList<RecipeCategory>();
 	
-	public Recipe(){}
+	public Recipe() {
+	}
 	
 	public List<RecipeCategory> getRecipeCategories() {
 		return recipeCategory;
 	}
+	
 	public void setRecipeCategories(RecipeCategory recipe_cat) {
 		this.recipeCategory.add(recipe_cat);
 	}
+	
 	public UUID getId() {
 		return id;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	public int getPrep_time() {
 		return prepTime;
 	}
+	
 	public void setPrep_time(int prep_time) {
 		this.prepTime = prep_time;
 	}
+	
 	public int getCook_time() {
 		return cookTime;
 	}
+	
 	public void setCook_time(int cook_time) {
 		this.cookTime = cook_time;
 	}
+	
 	public List<Product> getProducts() {
 		return products;
 	}
+	
 	public void setProducts(Product product) {
 		this.products.add(product);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", name=" + name + ", description=" + description + ", prep_time=" + prepTime
-				+ ", cook_time=" + cookTime + ", products=" + products + ", recipe_cat=" + recipeCategory + "]";
+			+ ", cook_time=" + cookTime + ", products=" + products + ", recipe_cat=" + recipeCategory + "]";
 	}
-	
 	
 }

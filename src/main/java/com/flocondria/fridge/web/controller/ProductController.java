@@ -1,30 +1,23 @@
 package com.flocondria.fridge.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.flocondria.fridge.web.request.ProductManagerRequest;
 import com.flocondria.fridge.web.service.ProductManagerService;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path="addProduct")
+@RequestMapping(path = "addProduct")
 public class ProductController {
 	
 	
-	 @Autowired
+	@Autowired
 	private ProductManagerService productManagerService;
 	
 	//Create product
-	@RequestMapping(method= RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createProduct(@RequestBody ProductManagerRequest request){
-		
+	public void createProduct(@RequestBody ProductManagerRequest request) {
 		productManagerService.createProduct(request);
 	}
 	

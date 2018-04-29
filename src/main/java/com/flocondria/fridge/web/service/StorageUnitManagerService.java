@@ -27,7 +27,7 @@ public class StorageUnitManagerService {
 		this.storageUnit = storageUnit;
 	}
 	
-	public void createStorageUnit(StorageUnitRequest request ) throws Exception{
+	public void createStorageUnit(StorageUnitRequest request) throws Exception{
 		Optional<Home> optional = homeRepository.findByName(request.getHomeName());
 		
 		if (!optional.isPresent()){
@@ -36,6 +36,8 @@ public class StorageUnitManagerService {
 		 this.storageUnit.setName(request.getName());
 		 this.storageUnit.setType(request.getType());
 		 this.storageUnit.setHome(optional.get());
+		 
+		 storageUnitRepository.save(storageUnit);
 	}
 	
 }

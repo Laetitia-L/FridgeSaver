@@ -1,97 +1,89 @@
 package com.flocondria.fridge.web.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.flocondria.fridge.domain.StorageUnit;
+import com.flocondria.fridge.repository.StorageUnitRepository;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.json.JacksonTester;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.SqlGroup;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.flocondria.fridge.domain.StorageUnit;
-import com.flocondria.fridge.domain.StorageUnitEnum;
-
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
+
+@RunWith(SpringRunner.class)
 @WebAppConfiguration
 @SpringBootTest
 public class StorageUnitControllerTest {
 	
 	private MockMvc mockStorage;
-
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
-
+	
 	@Autowired
 	private StorageUnitController storageUnitController;
-
-
+	
+	@Autowired
+	private StorageUnitRepository storageUnitRepository;
+	
 	@Before
-    public void setup() {
+	public void setup() {
 		mockStorage = standaloneSetup(storageUnitController).build();
-    }
-	@SqlGroup({
-			@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/beforeTestRun.sql"),
-			@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "/afterTestRun.sql")
-	})
-
-	//Case 1 : EntityNotFoundException is thrown
-	@Test
-	public void CreateStorageWithHomeNotFound() throws Exception{
-		this.mockStorage
-        .perform(post("/addStorageUnit")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content("{\n" +
-                 " \"name\": \"Storage_name\",\n" +
-                 " \"type\": \"Fridge\"\n" +
-                 "}"))
-        .andExpect(MockMvcResultMatchers.status().isNotFound())
-;
 	}
 	
+	//Case 1 : EntityNotFoundException is thrown because we don't specify any Home entity
+	@Test
+	public void createStorageWithHomeNotFound() throws Exception {
+		
+		Map<String, Object> storageUnit = new HashMap<String, Object>();
+		storageUnit.put("name", "Indesit");
+		storageUnit.put("type", "Fridge");
+		
+		String jsonStorageUnit = (new ObjectMapper())
+			   .writeValueAsString(storageUnit);
+		
+		this.mockStorage
+			.perform(post("/addStorageUnit")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(jsonStorageUnit))
+			.andExpect(MockMvcResultMatchers.status().isNotFound());
+		
+		Optional<StorageUnit> optional = storageUnitRepository.findByName("Indesit");
+		
+		Assert.assertFalse(optional.isPresent());
+	}
 	
 	//Case 2 : The storage unit is successfully created, the home exists
 	@Test
-	@Sql ("/beforeTestRun.sql")
-	public void CreateStorageSuccessfully() throws Exception{
+	@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/beforeTestRun.sql")
+	@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "/afterTestRun.sql")
+	public void createStorageSuccessfully() throws Exception {
+		
+		Map<String, Object> storageUnit = new HashMap<String, Object>();
+		storageUnit.put("name", "Indesit");
+		storageUnit.put("homeName", "Home Sweet Home");
+		storageUnit.put("type", "Fridge");
+		
 		this.mockStorage
-				.perform(post("/addStorageUnit")
-						.contentType(MediaType.APPLICATION_JSON)
-						.content("{\n" +
-								" \"name\": \"Storage_name\",\n" +
-								" \"homeName\": \"Home Sweet Home\",\n" +
-								" \"type\": \"Fridge\"\n" +
-								"}"))
-				.andExpect(MockMvcResultMatchers.status().isCreated());
-	}
-
-
-	@Test
-	@Sql ("/beforeTestRun.sql")
-	public void contextLoads() {
-
-		String selectQuery = "SELECT * from HOME";
-
-		List<Map<String, Object>> resultSet = jdbcTemplate
-				.queryForList(selectQuery);
-
-		System.out.println("////////////////////" + resultSet);
+			.perform(post("/addStorageUnit")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(
+					(new ObjectMapper()).writeValueAsString(storageUnit)
+				))
+			.andExpect(MockMvcResultMatchers.status().isCreated());
+		
+		Optional<StorageUnit> optional = storageUnitRepository.findByName("Indesit");
+		
+		Assert.assertTrue(optional.isPresent());
 	}
 }

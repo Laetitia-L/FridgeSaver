@@ -34,42 +34,37 @@ public class ProductCategory {
 	
 	@OneToMany(mappedBy = "productCategory", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Product> products = new ArrayList<Product>();
-
+	
 	public UUID getId() {
 		return id;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public List<Product> getProducts() {
 		return products;
 	}
-
+	
 	public void setProducts(Product product) {
 		this.products.add(product);
 	}
-
+	
 	public ProductCategory(String name) {
 		this.name = name;
 	}
 	
 	public ProductCategory() {
 	}
-
+	
 	@Override
 	public String toString() {
 		return "ProductCategory [id=" + id + ", name=" + name + ", products=" + products + "]";
 	}
 	
-	
-	
-	
-	
-
 }

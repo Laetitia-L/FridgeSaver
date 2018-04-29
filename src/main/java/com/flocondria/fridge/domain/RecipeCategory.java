@@ -16,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table
 public class RecipeCategory {
-
+	
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -27,32 +27,30 @@ public class RecipeCategory {
 	
 	@OneToMany
 	private List<Recipe> recipes = new ArrayList<Recipe>();
-
+	
 	public UUID getId() {
 		return id;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public List<Recipe> getRecipes() {
 		return recipes;
 	}
-
+	
 	public void setRecipes(Recipe recipe) {
 		this.recipes.add(recipe);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "RecipeCategory [id=" + id + ", name=" + name + ", recipes=" + recipes + "]";
 	}
 	
-	
-
 }
