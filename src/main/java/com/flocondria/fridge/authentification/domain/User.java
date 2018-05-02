@@ -10,57 +10,57 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table
 public class User {
-	
-	private UUID id;
-	private String username;
-	private String password;
-	private String passwordConfirm;
-	private Set<Role> roles;
-	
-	@Id
-	@GeneratedValue(generator = "UUID")
-	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	public UUID getId() {
-		return id;
-	}
 
-	public void setId(UUID id) {
-		this.id = id;
-	}
+    private UUID      id;
+    private String    username;
+    private String    password;
+    private String    passwordConfirm;
+    private Set<Role> roles;
 
-	public String getUsername() {
-		return username;
-	}
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    public UUID getId() {
+        return id;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	@Transient
-	public String getPasswordConfirm() {
-		return passwordConfirm;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	@ManyToMany
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	public Set<Role> getRoles() {
-		return roles;
-	}
+    @Transient
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
 }

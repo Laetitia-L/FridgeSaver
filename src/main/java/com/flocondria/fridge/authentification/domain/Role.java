@@ -9,18 +9,18 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Role {
-	private UUID id;
-    private String name;
+    private UUID      id;
+    private String    name;
     private Set<User> users;
 
     @Id
     @GeneratedValue(generator = "UUID")
-	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     public UUID getId() {
         return id;
     }
 
-	public void setId(UUID id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
