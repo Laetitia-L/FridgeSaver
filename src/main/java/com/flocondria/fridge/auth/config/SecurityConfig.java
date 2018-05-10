@@ -1,6 +1,5 @@
 package com.flocondria.fridge.auth.config;
 
-
 import com.flocondria.fridge.auth.security.CustomUserDetailsService;
 import com.flocondria.fridge.auth.security.JwtAuthenticationEntryPoint;
 import com.flocondria.fridge.auth.security.JwtAuthenticationFilter;

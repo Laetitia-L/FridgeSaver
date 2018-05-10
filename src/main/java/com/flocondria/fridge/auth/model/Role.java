@@ -1,34 +1,38 @@
 package com.flocondria.fridge.auth.model;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
-@Table(name = "roles")
 public class Role {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private UUID id;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<User> users = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     @NaturalId
     @Column(length = 60)
     private RoleName name;
 
-    public Role() {
-
-    }
+    public Role() {}
 
     public Role(RoleName name) {
         this.name = name;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -40,4 +44,11 @@ public class Role {
         this.name = name;
     }
 
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }
