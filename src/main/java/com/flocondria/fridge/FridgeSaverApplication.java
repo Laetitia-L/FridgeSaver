@@ -35,7 +35,7 @@ public class FridgeSaverApplication implements CommandLineRunner {
 
 //		User userJohn = new User("john.doe", "jj@d.com","password", "password");
 //		User userLele = new User("lele", "ll@d.com","password", "password");
-//
+
 		Role roleAdmin = new Role(RoleName.ROLE_ADMIN);
 		Role roleUser  = new Role(RoleName.ROLE_USER);
 //
