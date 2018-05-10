@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.exception;
+package com.flocondria.fridge.auth.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

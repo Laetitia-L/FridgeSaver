@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.payload;
+package com.flocondria.fridge.auth.payload;
 
 public class UserIdentityAvailability {
     private Boolean available;

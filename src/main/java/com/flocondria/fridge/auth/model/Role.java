@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.model;
+package com.flocondria.fridge.auth.model;
 
 import org.hibernate.annotations.NaturalId;
 

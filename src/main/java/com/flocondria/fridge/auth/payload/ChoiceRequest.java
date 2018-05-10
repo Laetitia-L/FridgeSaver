@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.payload;
+package com.flocondria.fridge.auth.payload;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

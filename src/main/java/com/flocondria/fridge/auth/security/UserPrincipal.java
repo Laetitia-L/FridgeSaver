@@ -1,7 +1,7 @@
-package com.flocondria.fridge.security.security;
+package com.flocondria.fridge.auth.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.flocondria.fridge.security.model.User;
+import com.flocondria.fridge.auth.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

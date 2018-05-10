@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.model;
+package com.flocondria.fridge.auth.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

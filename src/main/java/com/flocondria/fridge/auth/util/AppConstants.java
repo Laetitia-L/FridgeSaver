@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.util;
+package com.flocondria.fridge.auth.util;
 
 public interface AppConstants {
     String DEFAULT_PAGE_NUMBER = "0";

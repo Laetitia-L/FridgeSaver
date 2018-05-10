@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.security;
+package com.flocondria.fridge.auth.security;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 

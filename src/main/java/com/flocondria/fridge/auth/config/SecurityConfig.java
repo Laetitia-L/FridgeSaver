@@ -1,9 +1,9 @@
-package com.flocondria.fridge.security.config;
+package com.flocondria.fridge.auth.config;
 
 
-import com.flocondria.fridge.security.security.CustomUserDetailsService;
-import com.flocondria.fridge.security.security.JwtAuthenticationEntryPoint;
-import com.flocondria.fridge.security.security.JwtAuthenticationFilter;
+import com.flocondria.fridge.auth.security.CustomUserDetailsService;
+import com.flocondria.fridge.auth.security.JwtAuthenticationEntryPoint;
+import com.flocondria.fridge.auth.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -92,7 +92,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest()
                         .authenticated();
 
-        // Add our custom JWT security filter
+        // Add our custom JWT auth filter
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }

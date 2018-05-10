@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.security;
+package com.flocondria.fridge.auth.security;
 
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;

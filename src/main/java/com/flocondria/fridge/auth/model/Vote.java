@@ -1,6 +1,6 @@
-package com.flocondria.fridge.security.model;
+package com.flocondria.fridge.auth.model;
 
-import com.flocondria.fridge.security.model.audit.DateAudit;
+import com.flocondria.fridge.auth.model.audit.DateAudit;
 
 import javax.persistence.*;
 

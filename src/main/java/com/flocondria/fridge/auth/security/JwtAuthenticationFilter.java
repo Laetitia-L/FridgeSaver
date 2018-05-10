@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.security;
+package com.flocondria.fridge.auth.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +49,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (Exception ex) {
-            logger.error("Could not set user authentication in security context", ex);
+            logger.error("Could not set user authentication in auth context", ex);
         }
 
         filterChain.doFilter(request, response);

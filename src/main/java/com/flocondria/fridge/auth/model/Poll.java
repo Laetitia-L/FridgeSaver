@@ -1,6 +1,6 @@
-package com.flocondria.fridge.security.model;
+package com.flocondria.fridge.auth.model;
 
-import com.flocondria.fridge.security.model.audit.UserDateAudit;
+import com.flocondria.fridge.auth.model.audit.UserDateAudit;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

@@ -1,8 +1,8 @@
 package com.flocondria.fridge;
 
 import com.flocondria.fridge.repository.ProductRepository;
-import com.flocondria.fridge.security.repository.RoleRepository;
-import com.flocondria.fridge.security.repository.UserRepository;
+import com.flocondria.fridge.auth.repository.RoleRepository;
+import com.flocondria.fridge.auth.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

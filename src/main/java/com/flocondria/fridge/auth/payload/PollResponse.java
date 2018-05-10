@@ -1,4 +1,4 @@
-package com.flocondria.fridge.security.payload;
+package com.flocondria.fridge.auth.payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

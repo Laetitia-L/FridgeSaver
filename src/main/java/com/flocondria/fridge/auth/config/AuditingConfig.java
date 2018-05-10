@@ -1,6 +1,6 @@
-package com.flocondria.fridge.security.config;
+package com.flocondria.fridge.auth.config;
 
-import com.flocondria.fridge.security.security.UserPrincipal;
+import com.flocondria.fridge.auth.security.UserPrincipal;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;

@@ -1,7 +1,7 @@
-package com.flocondria.fridge.security.repository;
+package com.flocondria.fridge.auth.repository;
 
-import com.flocondria.fridge.security.model.Role;
-import com.flocondria.fridge.security.model.RoleName;
+import com.flocondria.fridge.auth.model.Role;
+import com.flocondria.fridge.auth.model.RoleName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
